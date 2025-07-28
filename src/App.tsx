@@ -46,7 +46,7 @@ function App() {
     // Set initial direction and language
     document.dir = i18n.language === 'ar' ? 'rtl' : 'ltr'
     document.documentElement.lang = i18n.language
-    
+
     // Update on language change
     const handleLanguageChange = (lng: string) => {
       document.dir = lng === 'ar' ? 'rtl' : 'ltr'
@@ -84,16 +84,19 @@ function App() {
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-XXXXXXX');`}
+            })(window,document,'script','dataLayer','GTM-PS8TNSNC');`}
           </script>
-
+          <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PS8TNSNC"
+            height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe></noscript>
+         
+         
           {/* Google Analytics */}
-          <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-HTL0DMFF4F"></script>
           <script>
             {`window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-XXXXXXXXXX');`}
+            gtag('config', 'G-HTL0DMFF4F');`}
           </script>
         </Helmet>
         <Router>
