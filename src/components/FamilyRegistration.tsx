@@ -11,7 +11,6 @@ interface FormData {
   familySize: number
   paymentMethods: string[]
   contact: string
-  proofFile?: FileList
 }
 
 const paymentOptions = [
@@ -32,31 +31,6 @@ export default function FamilyRegistration() {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true)
     try {
-      // Upload proof image if provided and bucket exists
-      if (data.proofFile && data.proofFile[0]) {
-        try {
-          const file = data.proofFile[0]
-          const fileExt = file.name.split('.').pop()
-          const fileName = `${Date.now()}.${fileExt}`
-          
-          const { data: uploadData, error: uploadError } = await supabase.storage
-            .from('family-proofs')
-            .upload(fileName, file)
-
-          if (uploadError) {
-            console.warn('File upload failed, continuing without proof image:', uploadError)
-          } else {
-            const { data: { publicUrl } } = supabase.storage
-              .from('family-proofs')
-              .getPublicUrl(fileName)
-            
-            proofImageUrl = publicUrl
-          }
-        } catch (uploadError) {
-          console.warn('File upload failed, continuing without proof image:', uploadError)
-        }
-      }
-
       // Insert family record (with or without proof image)
       const { error } = await supabase
         .from('families')
@@ -67,7 +41,6 @@ export default function FamilyRegistration() {
             family_size: data.familySize,
             payment_methods: data.paymentMethods,
             contact: data.contact,
-            proof_image_url: proofImageUrl,
             verified: false,
             contact_revealed: false
           }
