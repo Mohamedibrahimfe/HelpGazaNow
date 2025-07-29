@@ -52,8 +52,6 @@ function App() {
           <meta name="twitter:title" content="Help Gaza Now" />
           <meta name="twitter:description" content="Support families in Gaza by registering and browsing the family directory." />
           <meta name="twitter:image" content="/og-image.png" />
-
-          
         </Helmet>
         <Router>
           <div className="min-h-screen">
